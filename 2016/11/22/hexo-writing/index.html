@@ -1,0 +1,661 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="最近同事推薦採用 Hexo 來當 Test Corner 的部落格系統，聽他說很符合需求也很多整合功能，而且開發者 Tommy Chen 是台灣人，當然要支持一下本地開發者。
+簡單來說 Hexo 是個靜態的網頁產生器，可以吃 Markdown 後產生網頁存放在網頁伺服器端，加上現在很流行在 Github 上弄個 Github Pages 來當成個人或組織的網頁，所以將 Hexo 搭配著 Githu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用 Hexo 寫東西">
+<meta property="og:url" content="https://vincentliao.github.io/2016/11/22/hexo-writing/index.html">
+<meta property="og:site_name" content="Vspace">
+<meta property="og:description" content="最近同事推薦採用 Hexo 來當 Test Corner 的部落格系統，聽他說很符合需求也很多整合功能，而且開發者 Tommy Chen 是台灣人，當然要支持一下本地開發者。
+簡單來說 Hexo 是個靜態的網頁產生器，可以吃 Markdown 後產生網頁存放在網頁伺服器端，加上現在很流行在 Github 上弄個 Github Pages 來當成個人或組織的網頁，所以將 Hexo 搭配著 Githu">
+<meta property="og:updated_time" content="2017-01-06T09:42:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用 Hexo 寫東西">
+<meta name="twitter:description" content="最近同事推薦採用 Hexo 來當 Test Corner 的部落格系統，聽他說很符合需求也很多整合功能，而且開發者 Tommy Chen 是台灣人，當然要支持一下本地開發者。
+簡單來說 Hexo 是個靜態的網頁產生器，可以吃 Markdown 後產生網頁存放在網頁伺服器端，加上現在很流行在 Github 上弄個 Github Pages 來當成個人或組織的網頁，所以將 Hexo 搭配著 Githu">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://vincentliao.github.io/2016/11/22/hexo-writing/"/>
+
+
+
+
+
+  <title> 用 Hexo 寫東西 | Vspace </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Vspace</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle">右手寫程式左手做麵包</p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            歸檔
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            標籤
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://vincentliao.github.io/2016/11/22/hexo-writing/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="Vincent Liao">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://en.gravatar.com/userimage/56009247/d991fdebd9d0f0a6d8f4cf8bccce2e1e.jpeg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Vspace">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Vspace" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用 Hexo 寫東西
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-22T10:38:51+08:00">
+                2016-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近<a href="https://imsardine.github.io" target="_blank" rel="external">同事</a>推薦採用 <a href="https://hexo.io/zh-tw/" target="_blank" rel="external">Hexo</a> 來當 <a href="https://www.facebook.com/groups/test.corner/" target="_blank" rel="external">Test Corner</a> 的部落格系統，聽他說很符合需求也很多整合功能，而且開發者 Tommy Chen 是台灣人，當然要支持一下本地開發者。</p>
+<p>簡單來說 Hexo 是個靜態的網頁產生器，可以吃 Markdown 後產生網頁存放在網頁伺服器端，加上現在很流行在 Github 上弄個 <a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a> 來當成個人或組織的網頁，所以將 Hexo 搭配著 Github Pages 透過 <code>xxx.github.io</code> 網址已經是很常見的組合。</p>
+<p>其實已經有不少人寫過相關的使用方式，官方也很用心寫了<a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="external">完整的文件</a>，基本上照做不太會有問題，我只是根據我所碰到的問題記錄下來。</p>
+<a id="more"></a>
+<h1 id="設定-Hexo"><a href="#設定-Hexo" class="headerlink" title="設定 Hexo"></a>設定 Hexo</h1><p>Hexo 整個系統的設定檔都集中在 <code>_config.yml</code>，<a href="https://www.wikiwand.com/zh-tw/YAML" target="_blank" rel="external">YAML</a> 設計來方便閱讀序列是的資料格式，下面這段是設定要上傳到 Github Pages 指定方式，如果你沒有 Github Pages，去建立一個吧。設定檔中看到 <code>deploy</code> 區段：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:vincentliao/vincentliao.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
+<p>但是如果沒弄清楚 YAML 格式，那可能會出糗，像是在設定 <code>deploy</code> 區段時，一時沒注意把 <code>type</code> 的縮排給刪掉了，<strong>那就怎樣都不會傳上去了</strong>。</p>
+<h1 id="換主題"><a href="#換主題" class="headerlink" title="換主題"></a>換主題</h1><p>看了同事的範例後，也深深覺得 <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">NexT</a> 的主題很簡潔清楚，適合拿來寫技術部落格。使用的方式也被 Hexo 規範清楚了，必須在 <code>themes</code> 資料夾下建立相關的主題檔案。因此你只需要先把主題 clone 下來放在 <code>themes</code> 資料夾:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$  git <span class="built_in">clone</span> https://github.com/iissnan/hexo-theme-next themes/next</div></pre></td></tr></table></figure>
+<p>再來就是，讓 Hexo 知道有這個主題，設定一下 <code>theme</code> 區段<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Extensions</div><div class="line">## Plugins: https://hexo.io/plugins/</div><div class="line">## Themes: https://hexo.io/themes/</div><div class="line">theme: next</div></pre></td></tr></table></figure></p>
+<p>剩下就是主題設定，關於 NexT 的設定檔也是承襲 Hexo 使用 YMAL 格式，需要調整的項目可以參考<a href="http://theme-next.iissnan.com/getting-started.html#theme-settings" target="_blank" rel="external">官方文件</a>去調整，這邊我只列出我調整過的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># ---------------------------------------------------------------</div><div class="line"># Scheme Settings</div><div class="line"># ---------------------------------------------------------------</div><div class="line"></div><div class="line"># Schemes</div><div class="line">#scheme: Muse</div><div class="line">#scheme: Mist</div><div class="line">scheme: Pisces</div></pre></td></tr></table></figure></p>
+<p>你可以放上作者的圖片，有檔案就放檔案，沒檔案可以放連結：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Sidebar Avatar</div><div class="line"># in theme directory(source/images): /images/avatar.jpg</div><div class="line"># in site  directory(source/uploads): /uploads/avatar.jpg</div><div class="line">avatar: http://en.gravatar.com/userimage/56009247/d991fdebd9d0f0a6d8f4cf8bccce2e1e.jpeg</div></pre></td></tr></table></figure></p>
+<h1 id="開始寫文章"><a href="#開始寫文章" class="headerlink" title="開始寫文章"></a>開始寫文章</h1><p>設定一切順利，那你可以開始寫文章，整個流程是這樣：</p>
+<ul>
+<li>先建立文件(<code>hexo new</code>)</li>
+<li>然後開始編寫</li>
+<li>產生靜態文件(<code>hexo generate</code>)</li>
+<li>啟動本地伺服器(<code>hexo server --draft --open</code>)，檢查看看樣子</li>
+<li>傳送到伺服器(<code>hexo deploy</code>)，讓所有人看到文章</li>
+</ul>
+<h1 id="怎麼在另外一台電腦上寫？"><a href="#怎麼在另外一台電腦上寫？" class="headerlink" title="怎麼在另外一台電腦上寫？"></a>怎麼在另外一台電腦上寫？</h1><p>按照文件的教學都是教你怎麼建立全新的部落格，可是沒教你如果已經有個存在的 Github Page 了，那怎麼在另一台電腦上編寫文章？可能是我眼殘，不過沒看到有人討論這事情，不過後來想想，其實可能也很簡單，所以沒人講大家自然知道。我的方法就是把原本電腦上的部落格資料夾，整個壓縮起來：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ tar zcvf blog.tgz blog/</div></pre></td></tr></table></figure></p>
+<p>將壓縮過的檔案 <code>blog.tgz</code> 傳到另一台電腦，解開：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ tar zxvf blog.tgz</div></pre></td></tr></table></figure></p>
+<p>照理說就應該可以了，不過在我產生資料時，出了問題：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ hexo clean</div><div class="line">[Error: Module version mismatch. Expected 46, got 48.]</div><div class="line">&#123; [Error: Cannot find module &apos;./build/default/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &#125;</div><div class="line">&#123; [Error: Cannot find module &apos;./build/Debug/DTraceProviderBindings&apos;] code: &apos;MODULE_NOT_FOUND&apos; &#125;</div></pre></td></tr></table></figure></p>
+<p>查了一下，發現可能是另台電腦的 NodeJS 使用到的 module 版本不同的關係，在解開的專案下，可以看到 <code>node_modules</code> 資料夾，裡頭如果你複製過來的，那可能會版本不一致，解決方式是刪掉後，重新安裝：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ rm -rf node_modules</div><div class="line">$ npm install</div></pre></td></tr></table></figure></p>
+<p>後來想想，上面這個方法，倘若在別台已經編輯後，就會造成兩邊不同步的問題，在編輯前，怎麼取回最新的？總不能一直依賴複製吧？所以其實這方法並不好，或許可以在某一台機器上建立好環境，然後架設好 SSH Server，遠端登入那邊去編輯，其實就會是同一份，沒有資料同步問題。不然就是把整個檔案，除了那些生成的資源檔案以外，全部變成 git repo，然後放到 git server。需要另外的編寫環境時，就 git clone 回來，把 Hexo 安裝好，應該也可以，只是不知道哪個比較正規。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/21/phantomjs-screenshot/" rel="next" title="透過 PhatomJS 擷取網頁的畫面">
+                <i class="fa fa-chevron-left"></i> 透過 PhatomJS 擷取網頁的畫面
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/11/24/hexo-in-git-server/" rel="prev" title="把 Hexo 架設的部落格放到 git server">
+                把 Hexo 架設的部落格放到 git server <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://en.gravatar.com/userimage/56009247/d991fdebd9d0f0a6d8f4cf8bccce2e1e.jpeg"
+               alt="Vincent Liao" />
+          <p class="site-author-name" itemprop="name">Vincent Liao</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#設定-Hexo"><span class="nav-number">1.</span> <span class="nav-text">設定 Hexo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#換主題"><span class="nav-number">2.</span> <span class="nav-text">換主題</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#開始寫文章"><span class="nav-number">3.</span> <span class="nav-text">開始寫文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#怎麼在另外一台電腦上寫？"><span class="nav-number">4.</span> <span class="nav-text">怎麼在另外一台電腦上寫？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vincent Liao</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
+</div>
+
+<div class="theme-info">
+  主題 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
